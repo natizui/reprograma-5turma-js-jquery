@@ -1,0 +1,187 @@
+<!-- toggle não tá funcionando -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 20px;
+            border: 1px dotted mediumorchid;
+            padding: 10px;
+        }
+        .teste {
+            color: blanchedalmond;
+            background-color: blueviolet;
+        }
+
+        .link {
+            background-color: darkmagenta;
+            padding: 20px;
+            color:antiquewhite;
+            text-align: center;
+            margin: 0;
+        }
+        .div-a {
+            margin: 2px 250px;
+        }
+        .zerar {
+            text-align: center;
+            margin: 0;
+        }
+
+        input {
+            margin: 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div>Essa é uma div de teste.</div>
+    
+    <div>
+        <div class="div-a">
+            <p class="mouse">passe o mouse</p>
+            <p class="contador">0</p>
+        </div>
+        <h3 class="zerar"></h3>
+    </div>
+    
+    <div>
+        <input type="text">
+    </div>
+    
+    <div>
+        <a href="">teste</a>
+    </div>
+    
+    <div>
+        <button id="botao1" class="botao">Botão</button>
+        <button class="botao">Botão 2</button>
+    </div>
+    
+        <div>
+            <h5>clique para sumir</h5>
+        </div>
+
+    <div>
+        <div>
+            <h4>some e aparece</h4>
+        
+            <button id="hide">hide</button>
+            <button id="show">show</button>
+            <button id="hide-show">toggle</button>
+        </div>
+    
+        <div>
+            <p class="tog">olá!</p>
+            <p class="tog" style="display: none">thau!</p>
+            <button id="toggle">toggle</button>
+        </div>
+    </div>
+
+    <div>
+        <ul class="ho">
+            <li>A</li>
+            <li class="hey">B</li>
+            <li>C</li>
+            <li>D</li>
+        </ul>
+        <ul>
+            <li>A</li>
+            <li class="hey">B</li>
+            <li>C</li>
+            <li>D</li>
+        </ul>
+    </div>
+        
+    <div>
+        <button id="stg">SLIDE TOGGLE</button>
+        <p id="stgp">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi unde debitis, tempore, praesentium pariatur consequuntur autem quidem amet dolorum nemo mollitia consectetur saepe adipisci nostrum hic iusto rerum dolorem aliquam!</p>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script href="./javascript/index.js"></script>
+
+    <script>
+        //adicionar e remover classe
+        $('.div-a').removeClass('teste');
+        $('.div-a').addClass('link');
+        
+        //manipular estilo
+        $('.botao').attr('style', 'background-color: green');
+        $('a').attr('href', 'http://www.google.com')
+        
+        //mouse events
+        //quando clica -> aparece janela de alerta
+        $('p').click(function(){
+            alert("conseguiu? :)")});
+        var i = 0;
+        //quando mouse entra em um elemento -> muda texto do primeiro filho de div-a, muda o texto do ultimo filho de div-a pelo incremento de i
+        $('.div-a').mouseenter(function() {
+            $( "p:first", this ).text( "mouse enter" );
+            $( "p:last", this ).text( ++i );
+        })
+        //quando mouse sai do elemento -> muda texto do primeiro filho de div-a e faz aparecer o texto de .zerar
+        .mouseleave(function() {
+            $( "p:first", this ).text( "mouse leave" );
+            $('.zerar').text("clique para zerar");
+        });
+        //quando clica -> muda texto
+        $('.zerar').click(function () {
+            $('.mouse').text("passe o mouse");
+            $('.contador').text("0");
+            i = 0;
+            return i;
+        })
+
+        //quando input esta selecionado altera o css
+        $('input').focus(function () {
+            $(this).css('border-color', 'red');
+        });
+        
+        //para fazer o elemento sumir quando clica
+        $('h5').click(function () {
+            $(this).hide();
+        });
+
+        //para fazer sumir outro elemento
+        $('#hide').click(function () {
+            $('h4').hide();
+        });
+        //para fazer aparecer outro elemento
+        $('#show').click(function () {
+            $('h4').show();
+        });
+
+        //botão faz trocar
+        $('.toggle').click(function () {
+            $('.tog').toggle();
+        });
+        
+        //mesmo botao faz sumir e aparecer 
+        $( ".hide-show" ).click(function() {
+            $( "h4" ).toggle( "slow" );
+        });
+
+        //para encontrar elemntos
+        $('.ho').find('.hey').html('fui encontrado');
+        
+        //slideToggle -> faz sumir e aparecer com efeito 
+        $('#stg').click(function () {
+            $('#stgp').slideToggle(600);
+        });
+    </script> 
+
+</body>
+
+</html>
