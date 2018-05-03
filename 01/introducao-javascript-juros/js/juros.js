@@ -12,7 +12,11 @@ for (let i = 0; i < todosOsJuros.length; i++) {
   var time = tdTime.textContent;
   var result = dados.querySelector(".info-resultado");
   
-  var resultadoCalculado = calcularResultado(money, rate, time);
+  if(ehValido(money) && ehValido(rate) && ehValido(time)){
+    if(time > 0 || time <= 12){
+      var resultadoCalculado = calcularResultado(money, rate, time);
+    }
+  }
   
   result.textContent = resultadoCalculado;
 }
@@ -21,4 +25,10 @@ function calcularResultado(dinheiro, juros, quantidadeMeses) {
   var resultadoDentroDaFuncao = 0;
   resultadoDentroDaFuncao = dinheiro * juros/100 * quantidadeMeses;
   return resultadoDentroDaFuncao.toFixed(3);
+}
+
+function ehValido(valor) {
+  var resposta = "";
+  resposta = !inNaN(valor);
+  return resposta;
 }

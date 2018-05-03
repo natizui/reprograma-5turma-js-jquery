@@ -1,4 +1,5 @@
 var todosOsAlunos = document.querySelectorAll(".aluno");
+console.log(todosOsAlunos);
 
 for (var i = 0; i < todosOsAlunos.length; i++) {
     var aluno = todosOsAlunos[i];
